@@ -66,6 +66,9 @@ class PublicHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(data)
         except urllib.error.HTTPError as e:
             self.send_response(e.code)
+            for header, value in e.headers.items():
+                if header.lower() not in ("transfer-encoding", "connection", "content-encoding"):
+                    self.send_header(header, value)
             self.end_headers()
             self.wfile.write(e.read())
         except Exception as e:

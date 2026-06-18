@@ -1,7 +1,6 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, CheckCircle2, Loader2, CreditCard } from 'lucide-react';
+import { ArrowLeft, Loader2, CreditCard } from 'lucide-react';
 import { reports as reportApi, fixes as fixApi } from '../api/client';
 
 const FixSelection = () => {
@@ -20,37 +19,40 @@ const FixSelection = () => {
 
   if (isLoadingReport || isLoadingPackages) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-ghost">
-        <Loader2 className="w-12 h-12 text-velvet-primary animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Loader2 className="w-8 h-8 text-blush animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="bg-ghost min-h-screen pb-24">
-      <div className="bg-velvet-primary py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <Link to={`/audit/${auditId}`} className="flex items-center gap-2 text-ghost/60 hover:text-gold-accent mb-4 transition-colors text-sm uppercase tracking-widest font-heading font-bold">
-            <ArrowLeft className="w-4 h-4" /> Back to Report
+    <div className="bg-background min-h-screen pb-32 font-sans">
+      <div className="bg-blush-light/10 py-16 px-8 md:px-16 border-b border-border">
+        <div className="max-w-6xl mx-auto">
+          <Link to={`/audit/${auditId}`} className="nav-link flex items-center gap-2 mb-6">
+            <ArrowLeft className="w-3 h-3" /> back to report
           </Link>
-          <h1 className="font-display text-4xl text-white mb-2">Select Your Fixes</h1>
-          <p className="text-ghost/60">Choose the issues you want us to implement for you.</p>
+          <h1 className="text-4xl md:text-5xl mb-4">select your <em className="italic">fixes.</em></h1>
+          <p className="text-text-muted font-light uppercase text-xs tracking-widest">choose the issues you want us to implement for you.</p>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="grid grid-cols-1 gap-8">
+      <div className="max-w-6xl mx-auto px-8 md:px-16 mt-20">
+        <div className="grid grid-cols-1 gap-20">
           {/* Fix Packages */}
-          <div className="space-y-6">
-            <h2 className="text-xl font-display text-velvet-primary mt-4">Available Packages</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-12">
+            <div className="flex items-center gap-4">
+              <h2 className="text-3xl font-normal">available <em className="italic">packages.</em></h2>
+              <div className="hairline flex-grow"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {packages?.map((pkg: any) => (
-                <div key={pkg.id} className="card flex flex-col hover:border-gold-accent border-2 border-transparent transition-all cursor-pointer group">
-                   <h3 className="text-xl font-bold text-slate-deep mb-2">{pkg.name}</h3>
-                   <p className="text-sm text-slate-deep/60 mb-6 flex-grow">{pkg.description}</p>
-                   <div className="flex justify-between items-center mt-auto">
-                      <span className="text-2xl font-display text-velvet-primary">${pkg.price}</span>
-                      <button className="btn-primary py-2 px-4 text-sm">Select</button>
+                <div key={pkg.id} className="card group flex flex-col p-10 md:p-12 transition-all cursor-pointer">
+                   <h3 className="text-xl mb-4 lowercase">{pkg.name}</h3>
+                   <p className="text-text-muted text-sm font-light mb-12 flex-grow leading-relaxed">{pkg.description}</p>
+                   <div className="flex justify-between items-center mt-auto border-t border-border/40 pt-8">
+                      <span className="text-3xl font-display text-blush">${pkg.price}</span>
+                      <button className="btn-secondary">select</button>
                    </div>
                 </div>
               ))}
@@ -58,18 +60,21 @@ const FixSelection = () => {
           </div>
 
           {/* Individual Issues */}
-          <div className="card">
-             <h2 className="text-xl font-display text-velvet-primary mb-6">Individual Issues</h2>
-             <div className="divide-y divide-ghost">
+          <div className="space-y-12">
+             <div className="flex items-center gap-4">
+               <h2 className="text-3xl font-normal">individual <em className="italic">issues.</em></h2>
+               <div className="hairline flex-grow"></div>
+             </div>
+             <div className="space-y-4">
                 {report?.issues?.map((issue: any, i: number) => (
-                  <div key={i} className="py-4 flex justify-between items-center gap-4">
+                  <div key={i} className="card flex justify-between items-center gap-8 p-8">
                      <div>
-                        <p className="font-bold text-slate-deep">{issue.title}</p>
-                        <p className="text-xs text-slate-deep/60">{issue.category}</p>
+                        <p className="text-lg lowercase mb-1">{issue.title}</p>
+                        <p className="section-label">{issue.category}</p>
                      </div>
-                     <div className="flex items-center gap-4">
-                        <span className="text-sm font-bold text-velvet-primary">$29</span>
-                        <input type="checkbox" className="w-5 h-5 rounded border-gray-300 text-velvet-primary focus:ring-velvet-500" />
+                     <div className="flex items-center gap-8">
+                        <span className="text-xl font-display text-text-primary">$29</span>
+                        <input type="checkbox" className="w-5 h-5 border-gold/30 rounded-none text-blush focus:ring-blush" />
                      </div>
                   </div>
                 ))}
@@ -77,14 +82,14 @@ const FixSelection = () => {
           </div>
 
           {/* Checkout Summary */}
-          <div className="card bg-slate-deep text-white border-none">
-             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="bg-blush text-white p-12 md:p-16">
+             <div className="flex flex-col md:flex-row justify-between items-center gap-12">
                 <div>
-                   <p className="text-xs font-heading font-bold uppercase tracking-widest text-white/40 mb-1">Total Implementation Cost</p>
-                   <p className="text-4xl font-display text-gold-accent">$0.00</p>
+                   <p className="text-[0.6rem] uppercase tracking-widest text-white/60 mb-2">total implementation cost</p>
+                   <p className="text-5xl font-display">$0.00</p>
                 </div>
-                <button className="w-full md:w-auto btn-cta py-4 px-12 text-lg flex items-center justify-center gap-3">
-                   <CreditCard className="w-6 h-6" /> Proceed to Checkout
+                <button className="w-full md:w-auto bg-white text-blush px-12 py-5 text-[0.7rem] uppercase tracking-widest hover:bg-blush-light transition-colors flex items-center justify-center gap-3">
+                   <CreditCard className="w-4 h-4" /> proceed to checkout
                 </button>
              </div>
           </div>

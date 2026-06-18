@@ -7,45 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        velvet: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
-          950: '#3b0764',
-          primary: '#3A0CA3',
-          secondary: '#7209B7',
+        blush: {
+          light: '#F2E6E6',
+          DEFAULT: '#C89F9F',
+          dark: '#B08080',
         },
         gold: {
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          accent: '#FFD700',
+          DEFAULT: '#D4A84B',
         },
-        champagne: '#F3E5AB',
-        slate: {
-          deep: '#212529',
+        background: '#FAFAF8',
+        card: '#FFFFFF',
+        border: '#E8E4DE',
+        text: {
+          primary: '#2D2A26',
+          muted: '#8A8580',
         },
-        ghost: '#F8F9FA',
-        success: '#2ECC71',
-        alert: '#E63946',
+        success: '#8CBD8C',
+        alert: '#D17A7A',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Cormorant Garamond"', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Montserrat', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
-      boxShadow: {
-        gold: '0 4px 14px 0 rgba(255, 215, 0, 0.35)',
-        premium: '0 4px 24px 0 rgba(58, 12, 163, 0.08)',
+      letterSpacing: {
+        widest: '0.25em',
+        luxury: '0.36em',
       },
     },
   },

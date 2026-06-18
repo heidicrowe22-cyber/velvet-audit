@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Zap, Shield, BarChart3 } from 'lucide-react';
+import { Zap, BarChart3, ShieldCheck } from 'lucide-react';
 import { audits } from '../api/client';
 
 const LandingPage = () => {
@@ -24,94 +24,153 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="bg-velvet-primary min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <header className="relative py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center overflow-hidden">
-        {/* Subtle velvet texture background could go here */}
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="font-display text-5xl md:text-7xl text-gold-accent mb-6 leading-tight">
-            Agency-level insights for small businesses, <br className="hidden md:block" />
-            <span className="italic">in an hour.</span>
+      <section className="py-24 md:py-32 px-8 md:px-16">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="inline-block mb-8">
+            <span className="section-label px-4 py-1 border border-blush/20 rounded-full">
+              the velvet hour collective
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight max-w-5xl mx-auto">
+            agency-level insights for small businesses, <br className="hidden md:block" />
+            <em className="italic">in an hour.</em>
           </h1>
-          <p className="text-ghost text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto font-sans">
-            Get a comprehensive 17-category audit of your website. 
-            Identify critical issues, estimate business impact, and get professional fixes.
+          <p className="text-text-muted text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light">
+            get a comprehensive 17-category audit of your website. 
+            identify critical issues, estimate business impact, and get professional fixes.
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 w-full max-w-2xl mx-auto bg-white/10 p-2 rounded-xl backdrop-blur-sm border border-white/20">
-            <input
-              type="url"
-              placeholder="Enter your website URL (e.g., https://yourbusiness.com)"
-              className="flex-grow bg-white text-slate-deep px-6 py-4 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-gold-accent"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              required
-            />
+          <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-8 w-full max-w-3xl mx-auto items-end">
+            <div className="flex-grow w-full text-left">
+              <label className="section-label block mb-3">website url</label>
+              <input
+                type="url"
+                placeholder="https://yourbusiness.com"
+                className="input-field"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                required
+              />
+            </div>
             <button
               type="submit"
               disabled={loading}
-              className="btn-cta text-lg py-4 px-8 whitespace-nowrap flex items-center justify-center gap-2 disabled:opacity-50"
+              className="btn-primary whitespace-nowrap min-w-[200px]"
             >
-              <Search className="w-5 h-5" />
-              {loading ? 'Scanning...' : 'Get Free Audit'}
+              {loading ? 'scanning...' : 'get free audit'}
             </button>
           </form>
           
-          <p className="mt-6 text-ghost/60 text-sm italic">
-            No credit card required. Full report in under 60 seconds.
+          <p className="mt-12 text-text-muted/60 text-[0.7rem] uppercase tracking-widest italic">
+            no credit card required. full report in under 60 seconds.
           </p>
         </div>
-      </header>
+      </section>
+
+      <div className="hairline mx-auto max-w-6xl"></div>
 
       {/* Features Section */}
-      <section className="bg-ghost py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-velvet-primary mb-4">Why Velvet Hour?</h2>
-            <p className="text-slate-deep/60 text-xl max-w-2xl mx-auto">
-              We've automated the expertise of a high-end digital agency to give you the results you need at a fraction of the cost.
+      <section className="py-24 md:py-32 px-8 md:px-16 bg-blush-light/10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl mb-6">
+              why <em className="italic">velvet hour?</em>
+            </h2>
+            <p className="text-text-muted text-lg max-w-2xl mx-auto font-light">
+              we've automated the expertise of a high-end digital agency to give you the results you need at a fraction of the cost.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               {
-                icon: <Zap className="w-10 h-10 text-gold" />,
-                title: "17-Category Scan",
-                description: "From SEO and speed to accessibility and lead generation. We leave no stone unturned."
+                icon: <Zap className="w-8 h-8 text-gold" />,
+                title: "17-category scan",
+                description: "from seo and speed to accessibility and lead generation. we leave no stone unturned."
               },
               {
-                icon: <BarChart3 className="w-10 h-10 text-gold" />,
-                title: "Business Impact",
-                description: "We don't just find bugs; we tell you how much they're costing your business in real revenue."
+                icon: <BarChart3 className="w-8 h-8 text-gold" />,
+                title: "business impact",
+                description: "we don't just find bugs; we tell you how much they're costing your business in real revenue."
               },
               {
-                icon: <Shield className="w-10 h-10 text-gold" />,
-                title: "Done-For-You Fixes",
-                description: "Stop guessing. Buy a fix package and our experts will implement the changes for you."
+                icon: <ShieldCheck className="w-8 h-8 text-gold" />,
+                title: "done-for-you fixes",
+                description: "stop guessing. buy a fix package and our experts will implement the changes for you."
               }
             ].map((feature, i) => (
-              <div key={i} className="card flex flex-col items-center text-center">
-                <div className="mb-6 p-4 bg-velvet-primary/5 rounded-full">
+              <div key={i} className="card group">
+                <div className="mb-8 opacity-60 group-hover:opacity-100 transition-opacity">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl mb-4 text-velvet-primary">{feature.title}</h3>
-                <p className="text-slate-deep/70">{feature.description}</p>
+                <h3 className="text-2xl mb-4 lowercase">{feature.title}</h3>
+                <p className="text-text-muted font-light leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Social Proof Placeholder */}
-      <section className="bg-white py-16 border-y border-ghost">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-30 grayscale">
-          {/* Logo placeholders */}
-          <span className="font-display text-2xl">RealtyPro</span>
-          <span className="font-display text-2xl">BoutiqueHub</span>
-          <span className="font-display text-2xl">DineBetter</span>
-          <span className="font-display text-2xl">ServiceFlow</span>
-          <span className="font-display text-2xl">LocalPulse</span>
+      <div className="hairline mx-auto max-w-6xl"></div>
+
+      {/* Pricing/CTA Section */}
+      <section className="py-24 md:py-32 px-8 md:px-16 bg-background">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="h-px w-10 mx-auto mb-8 bg-gold/40"></div>
+          <h2 className="text-4xl md:text-5xl mb-12">professional fixes, <em className="italic">flat fee.</em></h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { name: 'quick fix', price: '$29', desc: 'single issue repair' },
+              { name: 'standard fix', price: '$79', desc: 'full category optimization', popular: true },
+              { name: 'category fix', price: '$149', desc: 'three categories deep-dive' },
+              { name: 'bundle fix', price: '$299', desc: 'total site transformation' }
+            ].map((plan, i) => (
+              <div key={i} className="card relative text-center flex flex-col items-center">
+                {plan.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blush text-white text-[0.6rem] px-3 py-1 uppercase tracking-widest">
+                    most popular
+                  </span>
+                )}
+                <h4 className="section-label mb-2">{plan.name}</h4>
+                <div className="text-3xl font-display mb-4">{plan.price}</div>
+                <p className="text-text-muted text-xs mb-8 uppercase tracking-widest">{plan.desc}</p>
+                <div className="mt-auto w-full">
+                  <button className="btn-secondary w-full">select plan</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="hairline mx-auto max-w-6xl"></div>
+
+      {/* Contact Form Section */}
+      <section className="py-24 md:py-32 px-8 md:px-16 bg-blush-light/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl mb-12">questions? <em className="italic">write to us.</em></h2>
+          <form className="space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+              <div className="space-y-3">
+                <label className="section-label">your name</label>
+                <input type="text" placeholder="full name" className="input-field" />
+              </div>
+              <div className="space-y-3">
+                <label className="section-label">your email</label>
+                <input type="email" placeholder="hello@example.com" className="input-field" />
+              </div>
+            </div>
+            <div className="text-left space-y-3">
+              <label className="section-label">message</label>
+              <textarea placeholder="how can we help?" rows={1} className="input-field resize-none" />
+            </div>
+            <button type="button" className="btn-primary px-12">send message</button>
+          </form>
+          <div className="mt-16 text-text-muted text-sm font-light">
+            or write directly — <a href="mailto:hello@velvethour.co" className="text-blush hover:underline">hello@velvethour.co</a>
+          </div>
         </div>
       </section>
     </div>

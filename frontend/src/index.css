@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +6,54 @@
 
 @layer base {
   body {
-    @apply bg-ghost text-slate-deep font-sans antialiased;
+    @apply bg-background text-text-primary font-sans font-light antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold;
+    @apply font-display lowercase font-normal;
   }
 
-  .font-display {
-    @apply font-serif;
+  em {
+    @apply text-blush italic font-display;
   }
+
+  /* .font-display is already a tailwind utility from the config */
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-velvet-primary text-white px-6 py-3 rounded-lg font-heading font-bold text-base transition-all duration-200 hover:bg-velvet-secondary disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-blush text-white px-[1.75rem] py-[0.85rem] rounded-none text-[0.7rem] uppercase tracking-widest transition-all duration-200 hover:bg-blush-dark disabled:opacity-50 disabled:cursor-not-allowed inline-block text-center;
   }
   
   .btn-cta {
-    @apply bg-gold-accent text-slate-deep px-6 py-3 rounded-lg font-heading font-bold text-base transition-all duration-200 shadow-gold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply btn-primary;
   }
   
   .btn-secondary {
-    @apply border-2 border-velvet-primary text-velvet-primary px-6 py-3 rounded-lg font-heading font-bold text-base transition-all duration-200 hover:bg-velvet-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply border border-gold/60 text-text-primary px-[1.75rem] py-[0.85rem] rounded-none text-[0.7rem] uppercase tracking-widest transition-all duration-200 hover:bg-blush hover:text-white hover:border-blush disabled:opacity-50 disabled:cursor-not-allowed inline-block text-center;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-premium border border-gray-100 p-6;
+    @apply bg-card rounded-none border border-border p-6 transition-colors duration-200 hover:bg-blush-light/30;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-velvet-500 focus:border-velvet-500 outline-none transition-all;
+    @apply w-full py-3 bg-transparent border-b border-gold/30 focus:border-blush outline-none transition-all placeholder:text-text-muted/60 text-text-primary;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gold/20;
+  }
+
+  .nav-link {
+    @apply text-[0.7rem] uppercase tracking-widest text-text-muted hover:text-blush transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-blush border-b border-gold;
+  }
+
+  .section-label {
+    @apply text-[0.65rem] uppercase tracking-luxury text-blush;
   }
 }

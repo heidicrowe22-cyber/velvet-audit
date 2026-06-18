@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { auth } from '../api/client';
-import { Mail, Lock, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,57 +24,52 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ghost flex items-center justify-center p-4">
-      <div className="card max-w-md w-full">
-        <div className="text-center mb-8">
-          <h1 className="font-display text-3xl text-velvet-primary mb-2">Welcome Back</h1>
-          <p className="text-slate-deep/60">Sign in to manage your audits</p>
+    <div className="min-h-screen bg-background flex items-center justify-center p-8 font-sans">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-16">
+          <Link to="/" className="font-display text-3xl text-blush lowercase mb-8 inline-block">velvet hour</Link>
+          <h1 className="text-4xl mb-4">welcome <em className="italic">back.</em></h1>
+          <p className="text-text-muted font-light">sign in to manage your audits.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-xs font-heading font-bold uppercase tracking-widest text-slate-deep/40 mb-2">Email Address</label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-deep/20" />
-              <input
-                type="email"
-                className="input-field pl-10"
-                placeholder="name@company.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-12">
+          <div className="space-y-3">
+            <label className="section-label">email address</label>
+            <input
+              type="email"
+              className="input-field"
+              placeholder="name@company.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
-          <div>
-            <label className="block text-xs font-heading font-bold uppercase tracking-widest text-slate-deep/40 mb-2">Password</label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-deep/20" />
-              <input
-                type="password"
-                className="input-field pl-10"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+          <div className="space-y-3">
+            <label className="section-label">password</label>
+            <input
+              type="password"
+              className="input-field"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-primary py-4 flex items-center justify-center gap-2"
+            className="w-full btn-primary py-4 flex items-center justify-center gap-3"
           >
-            {loading && <Loader2 className="w-5 h-5 animate-spin" />}
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+            {loading ? 'signing in...' : 'sign in'}
           </button>
         </form>
 
-        <div className="mt-8 pt-8 border-t border-ghost text-center">
-          <p className="text-sm text-slate-deep/60">
-            Don't have an account? <Link to="/signup" className="text-velvet-primary font-bold hover:text-gold-accent transition-colors">Get started</Link>
+        <div className="mt-16 text-center">
+          <p className="text-sm text-text-muted font-light">
+            don't have an account? <Link to="/signup" className="text-blush hover:underline">get started</Link>
           </p>
         </div>
       </div>

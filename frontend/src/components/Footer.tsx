@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="bg-slate-deep text-ghost py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="font-display text-xl mb-4">Velvet Hour Audit</p>
-        <p className="text-sm opacity-60">
-          &copy; {new Date().getFullYear()} Velvet Hour Audit. Agency-level insights for small businesses.
+    <footer className="bg-background border-t border-border py-12">
+      <div className="max-w-6xl mx-auto px-8 md:px-16 text-center">
+        <p className="text-blush/50 font-display tracking-[0.3em] text-xl mb-4 lowercase">velvet hour audit</p>
+        <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+          &copy; MMXXVI Velvet Hour Audit. agency-level insights, in an hour.
         </p>
       </div>
     </footer>
